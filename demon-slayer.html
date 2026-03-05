@@ -172,7 +172,7 @@
             z-index: 10;
         }
         
-        #player-container video {
+        #player-container iframe {
             width: 100%;
             height: 100%;
         }
@@ -205,7 +205,7 @@
             <p class="hero-synopsis">
                 Após perder sua família para um demônio, Tanjiro Kamado descobre que sua irmã Nezuko foi transformada em demônio. Determinado a curá-la e vingar sua família, ele se junta ao Corpo de Extermínio de Demônios.
             </p>
-            <button class="btn-play" onclick="playEpisode('https://mega.nz/file/tnAmwAAZ#LUiydiRttON6_Dv0R-zkBIHbO4_ixpY-ODu0CorjCd0', 'Episódio 1')">Assistir Episódio 1</button>
+            <button class="btn-play" onclick="playEpisode('https://mega.nz/embed/tnAmwAAZ#LUiydiRttON6_Dv0R-zkBIHbO4_ixpY-ODu0CorjCd0', 'Episódio 1')">Assistir Episódio 1</button>
         </div>
     </section>
 
@@ -218,25 +218,25 @@
                     <div class="episode-title">Crueldade</div>
                 </div>
             </div>
-            <div class="episode-card" onclick="playEpisode('https://mega.nz/file/Ej4i3SBD#CvjxgrSu3tF0Otos-HxmKx7p9Ul4Hfrx4b74anbbyYI', 'Episódio 2')">
+            <div class="episode-card" onclick="playEpisode('https://mega.nz/embed/Ej4i3SBD#CvjxgrSu3tF0Otos-HxmKx7p9Ul4Hfrx4b74anbbyYI', 'Episódio 2')">
                 <div class="episode-number">2</div>
                 <div class="episode-info">
                     <div class="episode-title">Treinador Sakonji Urokodaki</div>
                 </div>
             </div>
-            <div class="episode-card" onclick="playEpisode('https://mega.nz/file/hqBDxQyZ#10RlmGA5L3YLAgKCImWyLYxZhri6ossqZpv1Kx89GnA', 'Episódio 3')">
+            <div class="episode-card" onclick="playEpisode('https://mega.nz/embed/hqBDxQyZ#10RlmGA5L3YLAgKCImWyLYxZhri6ossqZpv1Kx89GnA', 'Episódio 3')">
                 <div class="episode-number">3</div>
                 <div class="episode-info">
                     <div class="episode-title">Sabre de Nichirin</div>
                 </div>
             </div>
-            <div class="episode-card" onclick="playEpisode('https://mega.nz/file/MjhUgDJJ#LnBpqFeomgPhZfez5jFh_Nf-Ogh8tm4oW5Twc0ocAnU', 'Episódio 4')">
+            <div class="episode-card" onclick="playEpisode('https://mega.nz/embed/MjhUgDJJ#LnBpqFeomgPhZfez5jFh_Nf-Ogh8tm4oW5Twc0ocAnU', 'Episódio 4')">
                 <div class="episode-number">4</div>
                 <div class="episode-info">
                     <div class="episode-title">Final do Treinamento</div>
                 </div>
             </div>
-            <div class="episode-card" onclick="playEpisode('https://mega.nz/file/BvJCwJRQ#R3k2TLmaJSg4trBe0qBqpciAdEeq0uhbyCeVEcnxtac', 'Episódio 5')">
+            <div class="episode-card" onclick="playEpisode('https://mega.nz/embed/BvJCwJRQ#R3k2TLmaJSg4trBe0qBqpciAdEeq0uhbyCeVEcnxtac', 'Episódio 5')">
                 <div class="episode-number">5</div>
                 <div class="episode-info">
                     <div class="episode-title">O Menino de Cabelo Amarelo</div>
@@ -254,14 +254,18 @@
     </div>
 
     <script>
-        function playEpisode(src, title) {
-            console.log("Abrindo episódio:", title, src);  // Debug no console (F12)
-            
+        function playEpisode(embedUrl, title) {
+            console.log("Tentando abrir episódio:", title, "URL:", embedUrl);  // Debug: abre o F12 > Console pra ver
+
             document.getElementById('player-container').innerHTML = `
-                <video controls autoplay style="width:100%; height:100%;">
-                    <source src="${src}" type="video/mp4">
-                    Erro ao carregar. Verifique o link do Mega.nz.
-                </video>
+                <iframe 
+                    src="${embedUrl}" 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    allow="autoplay; encrypted-media">
+                </iframe>
             `;
             document.getElementById('player-modal').style.display = 'flex';
         }
@@ -279,4 +283,3 @@
     </script>
 </body>
 </html>
-
