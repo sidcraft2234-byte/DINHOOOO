@@ -299,14 +299,14 @@
             <button class="seasons-btn">Temporadas</button>
             <div class="dropdown-content">
                 <button onclick="showSeason('t1')">Temporada 1 - Demon Slayer: Kimetsu no Yaiba</button>
-                <button onclick="showSeason('mugen')">Temporada 2 - Filme: Trem Infinito</button>
+                <button onclick="showSeason('t2')">Temporada 2 - Filme: Trem Infinito + Arco Distrito</button>
             </div>
         </div>
         
         <!-- Grid de Episódios -->
         <div class="episodes-grid">
 
-            <!-- Temporada 1 - Todos os 26 episódios -->
+            <!-- Temporada 1 - Completa (26 episódios) -->
             <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/tnAmwAAZ#LUiydiRttON6_Dv0R-zkBIHbO4_ixpY-ODu0CorjCd0', 'Episódio 1')">
                 <div class="episode-number">1</div>
                 <div class="episode-info"><div class="episode-title">Crueldade</div></div>
@@ -437,14 +437,8 @@
                 <div class="episode-info"><div class="episode-title">Novo Treinamento</div></div>
             </div>
 
-            <!-- Filme - Trem Infinito (tratado como Temporada 2) -->
-            <div class="episode-card" data-season="mugen" onclick="playEpisode('https://mega.nz/embed/F6RE1awD#pBGHJbu6mrEAl5kMCCDUXNCSbZFrPTYePjvVJffbDCo', 'Filme: Trem Infinito')">
-                <div class="episode-number">T2</div>
-                <div class="episode-info">
-                    <div class="episode-title">Filme: Trem Infinito</div>
-                    <div style="font-size: 0.9rem; color: var(--text-muted);">Duração: ~2h</div>
-                </div>
-            </div>
+            <!-- Temporada 2 (incluindo o filme) - Vazia por enquanto, esperando os links -->
+            <!-- Quando você mandar os links, eu adiciono aqui os cards com data-season="t2" -->
 
         </div>
     </section>
@@ -486,7 +480,7 @@
             }
         };
 
-        // Função para mostrar temporada/filme
+        // Função para mostrar temporada
         function showSeason(season) {
             const cards = document.querySelectorAll('.episode-card');
             cards.forEach(card => {
