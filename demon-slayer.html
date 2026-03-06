@@ -141,7 +141,7 @@
             display: none;
             position: absolute;
             background: var(--netflix-gray);
-            min-width: 200px;
+            min-width: 280px;
             box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
             border-radius: 8px;
             z-index: 1;
@@ -152,7 +152,7 @@
         
         .dropdown-content button {
             color: white;
-            padding: 12px 16px;
+            padding: 12px 20px;
             text-decoration: none;
             display: block;
             width: 100%;
@@ -283,7 +283,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Demon Slayer: Kimetsu no Yaiba</h1>
-            <p class="hero-meta">Todas as Temporadas • Ação, Fantasia, Drama</p>
+            <p class="hero-meta">Temporada 1 + Filme Mugen Train • Ação, Fantasia, Drama</p>
             <p class="hero-synopsis">
                 Tanjiro Kamado luta contra demônios para salvar sua irmã Nezuko e vingar sua família, ao lado do Corpo de Extermínio de Demônios.
             </p>
@@ -292,16 +292,14 @@
     </section>
 
     <section class="section">
-        <h2 class="section-title">Episódios</h2>
+        <h2 class="section-title">Episódios e Filme</h2>
         
         <!-- Botão "Temporadas" que abre dropdown -->
         <div class="seasons-dropdown">
             <button class="seasons-btn">Temporadas</button>
             <div class="dropdown-content">
-                <button onclick="showSeason('t1')">Temporada 1</button>
-                <button onclick="showSeason('t2')">Temporada 2</button>
-                <button onclick="showSeason('t5')">Temporada 5 (Hashira Training)</button>
-                <!-- Adicione mais quando quiser T3, T4... -->
+                <button onclick="showSeason('t1')">Temporada 1 - Demon Slayer: Kimetsu no Yaiba</button>
+                <button onclick="showSeason('mugen')">Filme - Trem Infinito</button>
             </div>
         </div>
         
@@ -314,55 +312,20 @@
                 <div class="episode-info"><div class="episode-title">Crueldade</div></div>
             </div>
 
-            <!-- ... Todos os outros 25 episódios da T1 aqui (copie do seu código anterior ou do último que eu mandei, com data-season="t1" e visible) ... -->
-            <!-- Exemplo do último da T1 -->
+            <!-- ... Adicione aqui todos os outros 25 episódios da T1 com data-season="t1" e visible (copie do seu código anterior) ... -->
+            <!-- Exemplo do Ep 26 -->
             <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/92hSGAyB#E6H2G6V2XONGf-lB0-erQat7MPhyhYrbdusSVgba7GM', 'Episódio 26')">
                 <div class="episode-number">26</div>
                 <div class="episode-info"><div class="episode-title">Novo Treinamento</div></div>
             </div>
 
-            <!-- Temporada 2 - Vazia por enquanto -->
-            <!-- <div class="episode-card" data-season="t2" onclick="playEpisode('SEU_EMBED_T2_EP1', 'T2 Ep 1')"> ... </div> -->
-
-            <!-- Temporada 5 (Hashira Training) - Cards prontos, mas escondidos (substitua embeds quando subir os vídeos) -->
-            <div class="episode-card" data-season="t5" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Episódio 1')">
-                <div class="episode-number">1</div>
-                <div class="episode-info"><div class="episode-title">Para Derrotar Muzan Kibutsuji</div></div>
-            </div>
-
-            <div class="episode-card" data-season="t5" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Episódio 2')">
-                <div class="episode-number">2</div>
-                <div class="episode-info"><div class="episode-title">A Dor do Pilar da Água Giyu Tomioka</div></div>
-            </div>
-
-            <div class="episode-card" data-season="t5" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Episódio 3')">
-                <div class="episode-number">3</div>
-                <div class="episode-info"><div class="episode-title">Tanjiro Totalmente Recuperado Entra no Treinamento dos Hashira!!</div></div>
-            </div>
-
-            <div class="episode-card" data-season="t5" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Episódio 4')">
-                <div class="episode-number">4</div>
-                <div class="episode-info"><div class="episode-title">Trazer um Sorriso ao Rosto de Alguém</div></div>
-            </div>
-
-            <div class="episode-card" data-season="t5" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Episódio 5')">
-                <div class="episode-number">5</div>
-                <div class="episode-info"><div class="episode-title">Eu Até Comi Demônios...</div></div>
-            </div>
-
-            <div class="episode-card" data-season="t5" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Episódio 6')">
-                <div class="episode-number">6</div>
-                <div class="episode-info"><div class="episode-title">O Mais Forte do Corpo de Extermínio de Demônios</div></div>
-            </div>
-
-            <div class="episode-card" data-season="t5" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Episódio 7')">
-                <div class="episode-number">7</div>
-                <div class="episode-info"><div class="episode-title">Pilar da Pedra: Gyomei Himejima</div></div>
-            </div>
-
-            <div class="episode-card" data-season="t5" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Episódio 8')">
-                <div class="episode-number">8</div>
-                <div class="episode-info"><div class="episode-title">Reunião</div></div>
+            <!-- Filme Mugen Train - Card único (substitua o embed quando mandar o link do filme) -->
+            <div class="episode-card" data-season="mugen" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'Filme: Trem Infinito')">
+                <div class="episode-number">Filme</div>
+                <div class="episode-info">
+                    <div class="episode-title">Trem Infinito (Mugen Train)</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Duração: ~2h</div>
+                </div>
             </div>
 
         </div>
@@ -378,7 +341,7 @@
 
     <script>
         function playEpisode(embedUrl, title) {
-            console.log("Abrindo episódio:", title, "URL:", embedUrl);
+            console.log("Abrindo:", title, "URL:", embedUrl);
 
             document.getElementById('player-container').innerHTML = `
                 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
@@ -405,7 +368,7 @@
             }
         };
 
-        // Função para mostrar temporada
+        // Função para mostrar temporada/filme
         function showSeason(season) {
             const cards = document.querySelectorAll('.episode-card');
             cards.forEach(card => {
