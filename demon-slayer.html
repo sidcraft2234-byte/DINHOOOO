@@ -11,6 +11,7 @@
             --your-green: #96f43f;
             --text-light: #ffffff;
             --text-muted: #999;
+            --netflix-gray: #221f1f;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -104,32 +105,39 @@
             color: white;
         }
         
-        /* Botão de Arcos */
-        .arcs-menu {
+        /* Menu de Temporadas - Estilo Netflix */
+        .seasons-menu {
             margin-bottom: 30px;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         
-        .arcs-menu button {
-            background: var(--your-green);
-            color: black;
+        .seasons-menu button {
+            background: var(--netflix-gray);
+            color: white;
             border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 4px;
+            padding: 10px 24px;
+            border-radius: 999px; /* Arredondado como Netflix */
             cursor: pointer;
             font-weight: bold;
+            font-size: 1rem;
             transition: all 0.3s;
+            min-width: 120px;
         }
         
-        .arcs-menu button:hover {
-            background: #a5ff4f;
+        .seasons-menu button:hover {
+            background: var(--your-green);
+            color: black;
             transform: scale(1.05);
         }
         
-        .arcs-menu button.active {
-            background: white;
+        .seasons-menu button.active {
+            background: var(--your-green);
             color: black;
+            box-shadow: 0 0 15px rgba(150, 244, 63, 0.5);
         }
         
         .episodes-grid {
@@ -139,12 +147,12 @@
         }
         
         .episode-card {
-            background: #221f1f;
+            background: var(--netflix-gray);
             border-radius: 6px;
             overflow: hidden;
             transition: all 0.3s;
             cursor: pointer;
-            display: none; /* Esconde por padrão, mostra só do arco selecionado */
+            display: none; /* Esconde por padrão */
         }
         
         .episode-card.visible {
@@ -153,7 +161,7 @@
         
         .episode-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(150,244,63,0.4);
         }
         
         .episode-number {
@@ -223,6 +231,7 @@
             .hero-synopsis { font-size: 1rem; }
             .episode-card .episode-number { font-size: 1.2rem; padding: 15px; }
             .modal-content { height: 85vh; }
+            .seasons-menu { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -243,67 +252,55 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Demon Slayer: Kimetsu no Yaiba</h1>
-            <p class="hero-meta">Temporada 1 (2019) • 26 Episódios • TV-MA • Ação, Fantasia, Drama</p>
+            <p class="hero-meta">Temporadas 1 e 2 • Ação, Fantasia, Drama</p>
             <p class="hero-synopsis">
-                Após perder sua família para um demônio, Tanjiro Kamado descobre que sua irmã Nezuko foi transformada em demônio. Determinado a curá-la e vingar sua família, ele se junta ao Corpo de Extermínio de Demônios.
+                Tanjiro Kamado luta contra demônios para salvar sua irmã Nezuko e vingar sua família, ao lado do Corpo de Extermínio de Demônios.
             </p>
             <button class="btn-play" onclick="playEpisode('https://mega.nz/embed/tnAmwAAZ#LUiydiRttON6_Dv0R-zkBIHbO4_ixpY-ODu0CorjCd0', 'Episódio 1')">Assistir Episódio 1</button>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="section-title">Episódios por Arco</h2>
+        <h2 class="section-title">Escolha a Temporada</h2>
         
-        <!-- Botões de Arcos -->
-        <div class="arcs-menu">
-            <button onclick="showArc('all')" class="active">Todos</button>
-            <button onclick="showArc('selecao-final')">Seleção Final (1-5)</button>
-            <button onclick="showArc('primeira-missao')">Primeira Missão (6-7)</button>
-            <button onclick="showArc('asakusa')">Asakusa (8-10)</button>
-            <button onclick="showArc('mansao-tsuzumi')">Mansão Tsuzumi (11-14)</button>
-            <button onclick="showArc('montanha-natagumo')">Montanha Natagumo (15-21)</button>
-            <button onclick="showArc('reabilitacao')">Reabilitação e Treinamento (22-26)</button>
+        <!-- Botões de Temporadas - Estilo Netflix -->
+        <div class="seasons-menu">
+            <button onclick="showSeason('t1')" class="active">Temporada 1</button>
+            <button onclick="showSeason('t2')">Temporada 2</button>
+            <!-- Adicione mais botões quando tiver T3, T4... -->
+            <!-- <button onclick="showSeason('t3')">Temporada 3</button> -->
         </div>
         
+        <!-- Grid de Episódios -->
         <div class="episodes-grid">
-            <!-- Todos os episódios com classes de arco para filtrar -->
-            <div class="episode-card visible" data-arc="selecao-final" onclick="playEpisode('https://mega.nz/embed/tnAmwAAZ#LUiydiRttON6_Dv0R-zkBIHbO4_ixpY-ODu0CorjCd0', 'Episódio 1')">
+
+            <!-- Temporada 1 - Todos visíveis por padrão -->
+            <!-- Episódio 1 -->
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/tnAmwAAZ#LUiydiRttON6_Dv0R-zkBIHbO4_ixpY-ODu0CorjCd0', 'Episódio 1')">
                 <div class="episode-number">1</div>
                 <div class="episode-info"><div class="episode-title">Crueldade</div></div>
             </div>
 
-            <div class="episode-card visible" data-arc="selecao-final" onclick="playEpisode('https://mega.nz/embed/Ej4i3SBD#CvjxgrSu3tF0Otos-HxmKx7p9Ul4Hfrx4b74anbbyYI', 'Episódio 2')">
+            <!-- Episódio 2 -->
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/Ej4i3SBD#CvjxgrSu3tF0Otos-HxmKx7p9Ul4Hfrx4b74anbbyYI', 'Episódio 2')">
                 <div class="episode-number">2</div>
                 <div class="episode-info"><div class="episode-title">Sakonji Urokodaki, o treinador</div></div>
             </div>
 
-            <div class="episode-card visible" data-arc="selecao-final" onclick="playEpisode('https://mega.nz/embed/hqBDxQyZ#10RlmGA5L3YLAgKCImWyLYxZhri6ossqZpv1Kx89GnA', 'Episódio 3')">
-                <div class="episode-number">3</div>
-                <div class="episode-info"><div class="episode-title">Sabito e Makomo</div></div>
-            </div>
-
-            <div class="episode-card visible" data-arc="selecao-final" onclick="playEpisode('https://mega.nz/embed/MjhUgDJJ#LnBpqFeomgPhZfez5jFh_Nf-Ogh8tm4oW5Twc0ocAnU', 'Episódio 4')">
-                <div class="episode-number">4</div>
-                <div class="episode-info"><div class="episode-title">Seleção final</div></div>
-            </div>
-
-            <div class="episode-card visible" data-arc="selecao-final" onclick="playEpisode('https://mega.nz/embed/BvJCwJRQ#R3k2TLmaJSg4trBe0qBqpciAdEeq0uhbyCeVEcnxtac', 'Episódio 5')">
-                <div class="episode-number">5</div>
-                <div class="episode-info"><div class="episode-title">Meu próprio aço</div></div>
-            </div>
-
-            <div class="episode-card visible" data-arc="primeira-missao" onclick="playEpisode('https://mega.nz/embed/sjBhCYKR#cwyaeUtmRIEq97AahrWtvlWN0N_sQ4IvsHz45-2CxUI', 'Episódio 6')">
-                <div class="episode-number">6</div>
-                <div class="episode-info"><div class="episode-title">O espadachim que acompanha um oni</div></div>
-            </div>
-
-            <!-- ... Coloque todos os outros episódios da T1 aqui com a classe data-arc correta, como no exemplo acima ... -->
-
-            <!-- Exemplo para Ep 26 (adicione os restantes conforme o seu código anterior) -->
-            <div class="episode-card visible" data-arc="reabilitacao" onclick="playEpisode('https://mega.nz/embed/92hSGAyB#E6H2G6V2XONGf-lB0-erQat7MPhyhYrbdusSVgba7GM', 'Episódio 26')">
+            <!-- ... Continue colando todos os 26 episódios da T1 aqui (os que você já tem com embeds corretos) ... -->
+            <!-- Exemplo do último (Ep 26) -->
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/92hSGAyB#E6H2G6V2XONGf-lB0-erQat7MPhyhYrbdusSVgba7GM', 'Episódio 26')">
                 <div class="episode-number">26</div>
                 <div class="episode-info"><div class="episode-title">Novo Treinamento</div></div>
             </div>
+
+            <!-- Temporada 2 - Escondida por padrão (placeholders) -->
+            <div class="episode-card" data-season="t2" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'T2 Ep 1')">
+                <div class="episode-number">1</div>
+                <div class="episode-info"><div class="episode-title">Pilar da Chama Kyojuro Rengoku</div></div>
+            </div>
+
+            <!-- ... Adicione os outros 17 da T2 quando tiver os embeds (ou deixe placeholder até subir os vídeos) ... -->
 
         </div>
     </section>
@@ -345,19 +342,19 @@
             }
         };
 
-        // Função para mostrar episódios por arco
-        function showArc(arc) {
+        // Função para mostrar temporada selecionada
+        function showSeason(season) {
             const cards = document.querySelectorAll('.episode-card');
-            const buttons = document.querySelectorAll('.arcs-menu button');
+            const buttons = document.querySelectorAll('.seasons-menu button');
 
             // Remove active de todos os botões
             buttons.forEach(btn => btn.classList.remove('active'));
 
             // Adiciona active ao botão clicado
-            event.target.classList.add('active');
+            event.currentTarget.classList.add('active');
 
             cards.forEach(card => {
-                if (arc === 'all' || card.dataset.arc === arc) {
+                if (card.dataset.season === season) {
                     card.classList.add('visible');
                 } else {
                     card.classList.remove('visible');
@@ -365,9 +362,9 @@
             });
         }
 
-        // Mostra todos ao carregar a página
+        // Mostra T1 ao carregar a página
         window.onload = function() {
-            showArc('all');
+            showSeason('t1');
         };
     </script>
 </body>
