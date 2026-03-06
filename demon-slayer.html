@@ -105,39 +105,71 @@
             color: white;
         }
         
-        /* Menu de Temporadas - Estilo Netflix */
-        .seasons-menu {
+        /* Botão "Temporadas" estilo Netflix + Dropdown */
+        .seasons-dropdown {
+            position: relative;
+            display: inline-block;
             margin-bottom: 30px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
         }
         
-        .seasons-menu button {
+        .seasons-btn {
             background: var(--netflix-gray);
             color: white;
             border: none;
-            padding: 10px 24px;
-            border-radius: 999px; /* Arredondado como Netflix */
+            padding: 12px 30px;
+            border-radius: 999px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s;
-            min-width: 120px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .seasons-menu button:hover {
+        .seasons-btn:hover {
             background: var(--your-green);
             color: black;
-            transform: scale(1.05);
         }
         
-        .seasons-menu button.active {
+        .seasons-btn::after {
+            content: '▼';
+            font-size: 0.8rem;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--netflix-gray);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            z-index: 1;
+            overflow: hidden;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown-content button {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .dropdown-content button:hover {
             background: var(--your-green);
             color: black;
-            box-shadow: 0 0 15px rgba(150, 244, 63, 0.5);
+        }
+        
+        .seasons-dropdown:hover .dropdown-content {
+            display: block;
         }
         
         .episodes-grid {
@@ -152,7 +184,7 @@
             overflow: hidden;
             transition: all 0.3s;
             cursor: pointer;
-            display: none; /* Esconde por padrão */
+            display: none;
         }
         
         .episode-card.visible {
@@ -231,7 +263,6 @@
             .hero-synopsis { font-size: 1rem; }
             .episode-card .episode-number { font-size: 1.2rem; padding: 15px; }
             .modal-content { height: 85vh; }
-            .seasons-menu { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -252,55 +283,164 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Demon Slayer: Kimetsu no Yaiba</h1>
-            <p class="hero-meta">Temporadas 1 e 2 • Ação, Fantasia, Drama</p>
+            <p class="hero-meta">Temporada 1 • 26 Episódios • TV-MA • Ação, Fantasia, Drama</p>
             <p class="hero-synopsis">
-                Tanjiro Kamado luta contra demônios para salvar sua irmã Nezuko e vingar sua família, ao lado do Corpo de Extermínio de Demônios.
+                Após perder sua família para um demônio, Tanjiro Kamado descobre que sua irmã Nezuko foi transformada em demônio. Determinado a curá-la e vingar sua família, ele se junta ao Corpo de Extermínio de Demônios.
             </p>
             <button class="btn-play" onclick="playEpisode('https://mega.nz/embed/tnAmwAAZ#LUiydiRttON6_Dv0R-zkBIHbO4_ixpY-ODu0CorjCd0', 'Episódio 1')">Assistir Episódio 1</button>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="section-title">Escolha a Temporada</h2>
+        <h2 class="section-title">Episódios</h2>
         
-        <!-- Botões de Temporadas - Estilo Netflix -->
-        <div class="seasons-menu">
-            <button onclick="showSeason('t1')" class="active">Temporada 1</button>
-            <button onclick="showSeason('t2')">Temporada 2</button>
-            <!-- Adicione mais botões quando tiver T3, T4... -->
-            <!-- <button onclick="showSeason('t3')">Temporada 3</button> -->
+        <!-- Botão "Temporadas" que abre dropdown -->
+        <div class="seasons-dropdown">
+            <button class="seasons-btn">Temporadas</button>
+            <div class="dropdown-content">
+                <button onclick="showSeason('t1')">Temporada 1</button>
+                <button onclick="showSeason('t2')">Temporada 2</button>
+                <!-- Adicione mais quando tiver T3... -->
+                <!-- <button onclick="showSeason('t3')">Temporada 3</button> -->
+            </div>
         </div>
         
         <!-- Grid de Episódios -->
         <div class="episodes-grid">
 
-            <!-- Temporada 1 - Todos visíveis por padrão -->
-            <!-- Episódio 1 -->
+            <!-- Temporada 1 - Completa com seus embeds -->
             <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/tnAmwAAZ#LUiydiRttON6_Dv0R-zkBIHbO4_ixpY-ODu0CorjCd0', 'Episódio 1')">
                 <div class="episode-number">1</div>
                 <div class="episode-info"><div class="episode-title">Crueldade</div></div>
             </div>
 
-            <!-- Episódio 2 -->
             <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/Ej4i3SBD#CvjxgrSu3tF0Otos-HxmKx7p9Ul4Hfrx4b74anbbyYI', 'Episódio 2')">
                 <div class="episode-number">2</div>
                 <div class="episode-info"><div class="episode-title">Sakonji Urokodaki, o treinador</div></div>
             </div>
 
-            <!-- ... Continue colando todos os 26 episódios da T1 aqui (os que você já tem com embeds corretos) ... -->
-            <!-- Exemplo do último (Ep 26) -->
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/hqBDxQyZ#10RlmGA5L3YLAgKCImWyLYxZhri6ossqZpv1Kx89GnA', 'Episódio 3')">
+                <div class="episode-number">3</div>
+                <div class="episode-info"><div class="episode-title">Sabito e Makomo</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/MjhUgDJJ#LnBpqFeomgPhZfez5jFh_Nf-Ogh8tm4oW5Twc0ocAnU', 'Episódio 4')">
+                <div class="episode-number">4</div>
+                <div class="episode-info"><div class="episode-title">Seleção final</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/BvJCwJRQ#R3k2TLmaJSg4trBe0qBqpciAdEeq0uhbyCeVEcnxtac', 'Episódio 5')">
+                <div class="episode-number">5</div>
+                <div class="episode-info"><div class="episode-title">Meu próprio aço</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/sjBhCYKR#cwyaeUtmRIEq97AahrWtvlWN0N_sQ4IvsHz45-2CxUI', 'Episódio 6')">
+                <div class="episode-number">6</div>
+                <div class="episode-info"><div class="episode-title">O espadachim que acompanha um oni</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/R7piRAqD#8vPP8ZNV9A_zv3aTSxT2ETAPqaE6w3rIHMKGnxK5HtI', 'Episódio 7')">
+                <div class="episode-number">7</div>
+                <div class="episode-info"><div class="episode-title">Muzan Kibutsuji</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/gqJH2TzD#_0T093hji0bZdWiBoqldkcafP0x8M1QG-zAOurLlB7g', 'Episódio 8')">
+                <div class="episode-number">8</div>
+                <div class="episode-info"><div class="episode-title">O cheiro de um perfume sedutor</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/47hFUIbC#cIHHB4YXEs2JQFczi1OHbCukgg-syk5L2vVoOmTMmq4', 'Episódio 9')">
+                <div class="episode-number">9</div>
+                <div class="episode-info"><div class="episode-title">O Demônio com a Arte da Sangue - A Casa dos Tambores</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/FnYjDI5I#TloEK4CnSM-GGKp1ZSYZCx38VcNtos6odDGiZgB92n8', 'Episódio 10')">
+                <div class="episode-number">10</div>
+                <div class="episode-info"><div class="episode-title">Sempre juntos</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/c3JBnKJC#mdDAhA5VncH3l9uQIADZ7-IK4JJnpnhC_Mkrzh-Mbuk', 'Episódio 11')">
+                <div class="episode-number">11</div>
+                <div class="episode-info"><div class="episode-title">Tsuzumi Mansion</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/02p0ERwS#wLV4EZHfax24OQuzbR9xIhk9HKQ_UoWYakgw9xDsrvU', 'Episódio 12')">
+                <div class="episode-number">12</div>
+                <div class="episode-info"><div class="episode-title">A Casa dos Tambores</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/pnoFWJoa#4K2zYPr0-YraxqW6G9Uv8RyDDWpgRvplbKJldWPF_m4', 'Episódio 13')">
+                <div class="episode-number">13</div>
+                <div class="episode-info"><div class="episode-title">Algo que é Inabalável</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/I3oDkaBK#iYE2zvjWF2iUbFEv6E6AhruGClc94u60O6eRjbweGGw', 'Episódio 14')">
+                <div class="episode-number">14</div>
+                <div class="episode-info"><div class="episode-title">A Casa onde os Demônios Moram</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/tr4zSZQC#IDXmAKMxCSSo2dnUT3Ahpn5fWg81pbAIoxl7tujqNeE', 'Episódio 15')">
+                <div class="episode-number">15</div>
+                <div class="episode-info"><div class="episode-title">A Montanha dos Demônios</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/h3ZRzZ7C#qNKpSYiAsUQoBZzf6FUuAgdWFfZmj0i592dsXEaZt5Y', 'Episódio 16')">
+                <div class="episode-number">16</div>
+                <div class="episode-info"><div class="episode-title">Deixa Eu Proteger Você</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/xzZiRAzR#EhnbgJYthU8O9s-B5jevheVsIvTbBgmfy4tuF71tyPs', 'Episódio 17')">
+                <div class="episode-number">17</div>
+                <div class="episode-info"><div class="episode-title">Um dos Doze Kizuki</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/smZFULIK#YPegz3myCa4yycBZZku7ykgRHaji9ftELalmmGG2Gh4', 'Episódio 18')">
+                <div class="episode-number">18</div>
+                <div class="episode-info"><div class="episode-title">Hoje</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/Y3wAkYwY#b82sPQE1V9trLVSr1F17-aZYPjPzYd9736F30rfM0S4', 'Episódio 19')">
+                <div class="episode-number">19</div>
+                <div class="episode-info"><div class="episode-title">Hinokami</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/Rrwizb7D#zLbOi81THphIDYVt4DpxGmoRQ5cb3JgGgKrlTGFutDU', 'Episódio 20')">
+                <div class="episode-number">20</div>
+                <div class="episode-info"><div class="episode-title">Pretendente do Espadachim</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/NipyVRrS#O_dHlnRTZuG_y8Bcmp3jVF6LzmypJe8_5euwyysSUVE', 'Episódio 21')">
+                <div class="episode-number">21</div>
+                <div class="episode-info"><div class="episode-title">Contra a Corrente</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/RmA0kLZb#j8iDUcYb2g_sjXCxVlw-rSRmZyLC9sysHcDFJfQp6oI', 'Episódio 22')">
+                <div class="episode-number">22</div>
+                <div class="episode-info"><div class="episode-title">Hinokami</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/l7wjDBya#fympYqig03iYgWFbuROVJHcUR2UlmOP-ARBsuXMDvNk', 'Episódio 23')">
+                <div class="episode-number">23</div>
+                <div class="episode-info"><div class="episode-title">Hashira Encontram</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/krYCSBbZ#Lv3a8hsYSBpogUpwZQoF95rssvgv_i0PhAsIl2sSU_Q', 'Episódio 24')">
+                <div class="episode-number">24</div>
+                <div class="episode-info"><div class="episode-title">Reabilitação</div></div>
+            </div>
+
+            <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/MnommLBJ#nRtNrKPsFj43iVeA2k4Dewg9cy7hG4JZGcx1MzV8SIo', 'Episódio 25')">
+                <div class="episode-number">25</div>
+                <div class="episode-info"><div class="episode-title">Tsuguko, Zenitsu e Inosuke</div></div>
+            </div>
+
             <div class="episode-card visible" data-season="t1" onclick="playEpisode('https://mega.nz/embed/92hSGAyB#E6H2G6V2XONGf-lB0-erQat7MPhyhYrbdusSVgba7GM', 'Episódio 26')">
                 <div class="episode-number">26</div>
                 <div class="episode-info"><div class="episode-title">Novo Treinamento</div></div>
             </div>
 
-            <!-- Temporada 2 - Escondida por padrão (placeholders) -->
-            <div class="episode-card" data-season="t2" onclick="playEpisode('https://mega.nz/embed/XXXXXXXX#YYYYYYYY', 'T2 Ep 1')">
-                <div class="episode-number">1</div>
-                <div class="episode-info"><div class="episode-title">Pilar da Chama Kyojuro Rengoku</div></div>
-            </div>
-
-            <!-- ... Adicione os outros 17 da T2 quando tiver os embeds (ou deixe placeholder até subir os vídeos) ... -->
+            <!-- Temporada 2 - Ainda vazia (sem cards visíveis) -->
+            <!-- Quando você mandar os links da T2, eu adiciono aqui com data-season="t2" -->
 
         </div>
     </section>
@@ -342,17 +482,9 @@
             }
         };
 
-        // Função para mostrar temporada selecionada
+        // Função para mostrar temporada
         function showSeason(season) {
             const cards = document.querySelectorAll('.episode-card');
-            const buttons = document.querySelectorAll('.seasons-menu button');
-
-            // Remove active de todos os botões
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Adiciona active ao botão clicado
-            event.currentTarget.classList.add('active');
-
             cards.forEach(card => {
                 if (card.dataset.season === season) {
                     card.classList.add('visible');
@@ -360,9 +492,12 @@
                     card.classList.remove('visible');
                 }
             });
+
+            // Fecha o dropdown depois de selecionar
+            document.querySelector('.dropdown-content').style.display = 'none';
         }
 
-        // Mostra T1 ao carregar a página
+        // Mostra T1 ao carregar
         window.onload = function() {
             showSeason('t1');
         };
