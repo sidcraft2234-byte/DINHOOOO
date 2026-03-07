@@ -45,7 +45,7 @@
             height: 95vh;
             min-height: 700px;
             background: linear-gradient(rgba(20,20,20,0.6), rgba(20,20,20,0.85)),
-                        url('./animes/jujutsu-kaisen/images/poster-hero.jpg') center/cover no-repeat; /* troque pela sua imagem de poster */
+                        url('animes/jujutsu-kaisen/images/jujutsu-kaisen-poster2') center/cover no-repeat;  /* ← Imagem que você pediu */
             position: relative;
             display: flex;
             align-items: center;
@@ -294,7 +294,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Jujutsu Kaisen</h1>
-            <p class="hero-meta">T1 + Filme 0 + T2 + T3 • Ação, Sobrenatural, Drama</p>
+            <p class="hero-meta">Temporada 1 + Filme 0 + Temporada 2 + Temporada 3 • Ação, Sobrenatural, Drama</p>
             <p class="hero-synopsis">
                 Itadori Yuji engole um dedo amaldiçoado de Ryomen Sukuna e se junta à escola de feiticeiros jujutsu para combater maldições e proteger o mundo.
             </p>
@@ -330,68 +330,46 @@
             </div>
         </div>
        
+        <!-- Grid de Episódios (preencha com seus links reais) -->
         <div class="episodes-grid">
-
-            <!-- Temporada 1 - Completa (24 episódios, títulos Crunchyroll PT-BR) -->
+            <!-- Temporada 1 -->
             <div class="episode-card visible" data-season="s1" onclick="playEpisode('https://mega.nz/embed/LINK_EP1_S1_AQUI', 'Episódio 1')">
                 <div class="episode-number">1</div>
                 <div class="episode-info"><div class="episode-title">Ryomen Sukuna</div></div>
             </div>
-            <div class="episode-card visible" data-season="s1" onclick="playEpisode('https://mega.nz/embed/LINK_EP2_S1_AQUI', 'Episódio 2')">
-                <div class="episode-number">2</div>
-                <div class="episode-info"><div class="episode-title">Por Mim Mesmo</div></div>
-            </div>
-            <div class="episode-card visible" data-season="s1" onclick="playEpisode('https://mega.nz/embed/LINK_EP3_S1_AQUI', 'Episódio 3')">
-                <div class="episode-number">3</div>
-                <div class="episode-info"><div class="episode-title">Garota de Aço</div></div>
-            </div>
-            <div class="episode-card visible" data-season="s1" onclick="playEpisode('https://mega.nz/embed/LINK_EP4_S1_AQUI', 'Episódio 4')">
-                <div class="episode-number">4</div>
-                <div class="episode-info"><div class="episode-title">Útero Amaldiçoado Deve Morrer</div></div>
-            </div>
-            <div class="episode-card visible" data-season="s1" onclick="playEpisode('https://mega.nz/embed/LINK_EP5_S1_AQUI', 'Episódio 5')">
-                <div class="episode-number">5</div>
-                <div class="episode-info"><div class="episode-title">Útero Amaldiçoado Deve Morrer -II-</div></div>
-            </div>
-            <div class="episode-card visible" data-season="s1" onclick="playEpisode('https://mega.nz/embed/LINK_EP6_S1_AQUI', 'Episódio 6')">
-                <div class="episode-number">6</div>
-                <div class="episode-info"><div class="episode-title">Depois da Chuva</div></div>
-            </div>
-            <div class="episode-card visible" data-season="s1" onclick="playEpisode('https://mega.nz/embed/LINK_EP7_S1_AQUI', 'Episódio 7')">
-                <div class="episode-number">7</div>
-                <div class="episode-info"><div class="episode-title">Assalto</div></div>
-            </div>
-            <!-- Continue adicionando os episódios 8 a 24 da S1 com títulos Crunchyroll PT-BR: -->
-            <!-- Ex: Ep 8: "Bate-papo", Ep 9: "Pequeno", Ep 10: "Ocioso", etc. -->
-            <!-- Preencha com seus links reais quando tiver -->
+            <!-- Adicione os outros 23 episódios da T1 aqui, com títulos Crunchyroll PT-BR -->
+            <!-- Exemplo: -->
+            <!-- <div class="episode-card visible" data-season="s1" onclick="playEpisode('LINK_EP2', 'Episódio 2')"> -->
+            <!--     <div class="episode-number">2</div> -->
+            <!--     <div class="episode-info"><div class="episode-title">Por Mim Mesmo</div></div> -->
+            <!-- </div> -->
 
-            <!-- Filme: Jujutsu Kaisen 0 -->
+            <!-- Filme Jujutsu Kaisen 0 -->
             <div class="episode-card" data-season="filme0" onclick="playEpisode('https://mega.nz/embed/LINK_FILME0_AQUI', 'Filme: Jujutsu Kaisen 0')">
                 <div class="episode-number">Filme</div>
                 <div class="episode-info"><div class="episode-title">Jujutsu Kaisen 0</div></div>
             </div>
 
-            <!-- Temporada 2 - Arco Hidden Inventory / Premature Death (5 episódios) -->
+            <!-- Temporada 2 - Hidden Inventory (5 eps) -->
             <div class="episode-card" data-season="s2p1" onclick="playEpisode('https://mega.nz/embed/LINK_EP1_S2_AQUI', 'Episódio 1')">
                 <div class="episode-number">1</div>
                 <div class="episode-info"><div class="episode-title">O Passado de Gojo e Geto</div></div>
             </div>
-            <!-- Adicione os outros 4 episódios -->
+            <!-- Adicione os outros 4 -->
 
-            <!-- Temporada 2 - Arco Shibuya Incident (18 episódios) -->
+            <!-- Temporada 2 - Shibuya Incident (18 eps) -->
             <div class="episode-card" data-season="s2p2" onclick="playEpisode('https://mega.nz/embed/LINK_EP6_S2_AQUI', 'Episódio 6')">
                 <div class="episode-number">6</div>
                 <div class="episode-info"><div class="episode-title">É Assim Que É</div></div>
             </div>
-            <!-- Adicione os outros 17 episódios -->
+            <!-- Adicione os outros 17 -->
 
-            <!-- Temporada 3 - Arco Culling Game (placeholders) -->
+            <!-- Temporada 3 - Culling Game (placeholders) -->
             <div class="episode-card" data-season="s3" onclick="playEpisode('https://mega.nz/embed/LINK_EP1_S3_AQUI', 'Episódio 1')">
                 <div class="episode-number">1</div>
                 <div class="episode-info"><div class="episode-title">Paixão</div></div>
             </div>
-            <!-- Adicione mais episódios quando tiver links -->
-
+            <!-- Adicione mais quando tiver -->
         </div>
     </section>
 
